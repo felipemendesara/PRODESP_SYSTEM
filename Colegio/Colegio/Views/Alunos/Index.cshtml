@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Colegio.Models.Aluno>
+
+@{
+    ViewBag.Title = "Aluno - Inicio";
+}
+
+<h2>Aluno</h2>
+
+<p>
+    @Html.ActionLink("Adicionar aluno", "Create")
+</p>
+@if (Convert.ToBoolean(Model.Count() == 0))
+{
+    <img src="~/images/big_oops.png" alt="Alternate Text" />
+    <div ng-controller="AlunosController">
+        <h1> {{Mensagem}}</h1>
+    </div>
+}
+else
+{
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AlunoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlunoRg)
+        </th>
+        <th></th>
+    </tr>
+ 
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlunoNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlunoRg)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AlunoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.AlunoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.AlunoId })
+        </td>
+    </tr>
+}
+
+</table>
+}

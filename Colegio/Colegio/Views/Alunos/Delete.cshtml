@@ -1,0 +1,40 @@
+﻿@model Colegio.Models.Aluno
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Deletar</h2>
+
+<h3>Deseja realmente deletar o Aluno: @Html.DisplayFor(model => model.AlunoNome) ?</h3>
+<div>
+    <h4>Aluno</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlunoNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlunoNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlunoRg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlunoRg)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Inicio", "Index")
+        </div>
+    }
+</div>
